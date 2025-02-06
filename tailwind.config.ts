@@ -56,6 +56,16 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
         "gray-soft": "#525D73",
+        "main-green": "#02983E",
+        "gray-soft-25": "#FAFAFA",
+        "gray-soft-900": "#404A60",
+        "gray-soft-500": "#667085",
+        "gray-soft-400": "#858D9D",
+      },
+      boxShadow: {
+        card: "0px 1px 3px 0px rgba(0, 0, 0, 0.051)",
+        "card-2":
+          "0px 1px 3px 0px rgba(0, 0, 0, 0.051), 0px 1px 2px 0px rgba(0, 0, 0, 0.102)",
       },
     },
   },

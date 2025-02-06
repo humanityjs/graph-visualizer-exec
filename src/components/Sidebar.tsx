@@ -65,7 +65,7 @@ const NavLink = ({
       {isCollapsed && (
         <div
           className={cn(
-            "invisible absolute left-full top-1 ml-3 origin-left scale-95 rounded-md bg-black px-4 py-2 text-white opacity-0 transition-all",
+            "invisible absolute left-full top-1 z-50 ml-3 origin-left scale-95 rounded-md bg-black px-4 py-2 text-white opacity-0 transition-all",
             "group-hover:visible group-hover:scale-100 group-hover:opacity-100",
           )}
         >
