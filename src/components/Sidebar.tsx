@@ -2,7 +2,6 @@
 
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import {
@@ -13,6 +12,7 @@ import {
   CircleUser,
   FileText,
   LayoutGrid,
+  LogOut,
   Pin,
   Settings,
   SlidersHorizontal,
@@ -56,12 +56,22 @@ const NavLink = ({
       key={item.href}
       href={item.href}
       className={cn(
-        "flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-gray-600 transition-colors",
+        "group relative flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm text-gray-600 transition-colors",
         isActive ? "bg-green-50 text-[#525D73]" : "hover:bg-gray-100",
       )}
     >
       <Icon size={20} className={isActive ? "text-black" : "text-gray-400"} />
       {!isCollapsed && <span>{item.label}</span>}
+      {isCollapsed && (
+        <div
+          className={cn(
+            "invisible absolute left-full top-1 ml-3 origin-left scale-95 rounded-md bg-black px-4 py-2 text-white opacity-0 transition-all",
+            "group-hover:visible group-hover:scale-100 group-hover:opacity-100",
+          )}
+        >
+          <span>{item.label}</span>
+        </div>
+      )}
     </Link>
   );
 };
@@ -107,7 +117,7 @@ function SidebarContent({
         </Button>
       </div>
 
-      <ScrollArea className="flex-1 px-4">
+      <div className="w-full flex-1 overflow-x-visible px-4">
         <nav className="space-y-1 py-4">
           {mainNavItems.map((item) => (
             <NavLink
@@ -118,9 +128,9 @@ function SidebarContent({
             />
           ))}
         </nav>
-      </ScrollArea>
+      </div>
 
-      <div className="relative flex w-full flex-col justify-between space-y-6 overflow-hidden p-4">
+      <div className="relative flex w-full flex-col justify-between space-y-6 overflow-visible p-4">
         <div className="w-full space-y-1">
           {[{ href: "/settings", icon: Settings, label: "Settings" }].map(
             (item) => (
@@ -134,17 +144,29 @@ function SidebarContent({
           )}
         </div>
         <div className="w-full border-t">
-          <div className="flex items-center justify-between">
-            <Avatar>
-              <AvatarImage src="#" />
-              <AvatarFallback>
-                <CircleUser className="text-gray-400" size={48} />
-              </AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col">
-              <p className="text-gray-soft text-sm">John</p>
-              <p className="text-gray-soft text-sm">Doe</p>
+          <div className="flex items-center justify-between px-1 py-3">
+            <div className="flex-start flex items-center gap-2">
+              <Avatar>
+                <AvatarImage src="#" />
+                <AvatarFallback>
+                  <CircleUser
+                    className="text-gray-400 transition-all duration-300 ease-in-out"
+                    size={isCollapsed ? 20 : 48}
+                  />
+                </AvatarFallback>
+              </Avatar>
+              {!isCollapsed && (
+                <div className="flex flex-col">
+                  <p className="text-sm text-gray-soft">John</p>
+                  <p className="text-sm text-gray-soft">Doe</p>
+                </div>
+              )}
             </div>
+            {!isCollapsed && (
+              <Button variant="ghost" size="icon">
+                <LogOut className="text-black" />
+              </Button>
+            )}
           </div>
         </div>
       </div>
