@@ -61,6 +61,8 @@ export default {
         "gray-soft-900": "#404A60",
         "gray-soft-500": "#667085",
         "gray-soft-400": "#858D9D",
+        "main-purple": "#6236CC",
+        "light-purple": "#F2EDFF",
       },
       boxShadow: {
         card: "0px 1px 3px 0px rgba(0, 0, 0, 0.051)",
