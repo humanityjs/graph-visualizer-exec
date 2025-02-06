@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 
+import { Sidebar } from "@/components/Sidebar";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
@@ -14,7 +15,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+      <body className="bg-white">
+        <div className="flex h-screen items-start justify-start">
+          <Sidebar />
+          <main className="h-screen flex-1 overflow-auto p-8 pt-24 lg:pt-8">
+            {children}
+          </main>
+        </div>
+      </body>
     </html>
   );
 }
