@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: "Graph Visualizer",
   description: "Graph Visualizer",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 };
 
 export default function RootLayout({
@@ -16,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="bg-white">
-        <div className="flex h-screen items-start justify-start overflow-hidden">
+        <div className="flex min-h-screen items-start justify-start overflow-x-hidden">
           <Sidebar />
-          <main className="h-screen flex-1 bg-[rgb(250,250,250)] p-6 pt-20 lg:p-12 lg:pt-20 xl:pt-8">
+          <main className="min-h-screen w-full flex-1 bg-[rgb(250,250,250)] p-1 pt-20 md:p-6 lg:p-12 lg:pt-20 xl:pt-8">
             {children}
           </main>
         </div>

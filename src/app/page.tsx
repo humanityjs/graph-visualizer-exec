@@ -1,7 +1,6 @@
 "use client";
 
 import Heading from "@/components/ui/heading";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 
 import { ReactFlowProvider } from "@xyflow/react";
@@ -22,10 +21,10 @@ import { properties, remediations, servers } from "./data";
 
 export default function HomePage() {
   return (
-    <div className="flex h-full w-full flex-col gap-8 overflow-scroll xl:grid xl:grid-cols-3 xl:overflow-hidden">
+    <div className="flex h-full w-full flex-col gap-6 overflow-scroll xl:grid xl:grid-cols-3 xl:gap-8 xl:overflow-hidden">
       <div className="w-full xl:col-span-1 xl:h-full xl:overflow-hidden">
         <div className="h-full w-full rounded-2xl bg-white shadow-card">
-          <ScrollArea className="h-full p-8 xl:overflow-scroll">
+          <div className="h-full p-3 xl:overflow-scroll xl:p-8">
             <Heading>Description</Heading>
             <p className="mb-8 text-xs leading-5 text-gray-soft">
               Lorem ipsum dolor sit amet consectetur. Aenean sodales
@@ -69,11 +68,11 @@ export default function HomePage() {
                 <p>{remediation.description}</p>
               </Remediation>
             ))}
-          </ScrollArea>
+          </div>
         </div>
       </div>
       <div className="w-full xl:col-span-2 xl:h-full xl:overflow-scroll">
-        <div className="relative w-full rounded-2xl bg-white p-7 shadow-card">
+        <div className="relative w-full rounded-2xl bg-white p-3 shadow-card xl:p-7">
           <Heading className="mb-4">Lorem Lorem Lorem</Heading>
           <div className="relative w-full rounded-xl bg-gray-soft-25">
             <div className="relative h-[300px] overflow-visible">
