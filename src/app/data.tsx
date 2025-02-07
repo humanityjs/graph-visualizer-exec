@@ -1,5 +1,14 @@
 import { MarkerType, type Node } from "@xyflow/react";
-import { Check } from "lucide-react";
+import {
+  AlertTriangle,
+  Box,
+  Check,
+  FileText,
+  LayoutGrid,
+  Pin,
+  SlidersHorizontal,
+  Sparkles,
+} from "lucide-react";
 
 export type NodeData = Node<
   {
@@ -222,4 +231,21 @@ const properties = [
   },
 ];
 
-export { initialEdges, initialNodes, properties, remediations, servers };
+const mainNavItems = [
+  { href: "/", icon: LayoutGrid, label: "Dashboard" },
+  { href: "/alerts", icon: AlertTriangle, label: "Alerts" },
+  { href: "/resources", icon: Box, label: "Resources" },
+  { href: "/integrations", icon: Sparkles, label: "Integrations" },
+  { href: "/pinned", icon: Pin, label: "Pinned" },
+  { href: "/documents", icon: FileText, label: "Documents" },
+  { href: "/filters", icon: SlidersHorizontal, label: "Filters" },
+];
+
+export {
+  initialEdges,
+  initialNodes,
+  mainNavItems,
+  properties,
+  remediations,
+  servers,
+};

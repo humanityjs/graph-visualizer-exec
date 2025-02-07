@@ -4,42 +4,28 @@ import Heading from "@/components/ui/heading";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 
-import { ReactFlow } from "@xyflow/react";
+import { ReactFlowProvider } from "@xyflow/react";
 
 import LabelValue from "@/components/LabelValue";
 import Remediation from "@/components/Remediation";
 
 import Asset from "@/components/Asset";
-import CustomNode from "@/components/custom-node/CustomNode";
 import GraphLabel from "@/components/GraphLabel";
+import ReactFlow from "@/components/ReactFlow";
 import RiskCount from "@/components/RiskCount";
 import "@xyflow/react/dist/style.css";
 import {
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
 } from "lucide-react";
-import { useMemo } from "react";
-import {
-  initialEdges,
-  initialNodes,
-  properties,
-  remediations,
-  servers,
-} from "./data";
+import { properties, remediations, servers } from "./data";
 
 export default function HomePage() {
-  const nodeTypes = useMemo(
-    () => ({
-      customNode: CustomNode,
-    }),
-    [],
-  );
-
   return (
-    <div className="grid h-full w-full grid-cols-3 gap-8 overflow-visible">
-      <div className="col-span-1 h-full w-full overflow-hidden">
+    <div className="flex h-full w-full flex-col gap-8 overflow-scroll xl:grid xl:grid-cols-3 xl:overflow-hidden">
+      <div className="w-full xl:col-span-1 xl:h-full xl:overflow-hidden">
         <div className="h-full w-full rounded-2xl bg-white shadow-card">
-          <ScrollArea className="h-full overflow-scroll p-8">
+          <ScrollArea className="h-full p-8 xl:overflow-scroll">
             <Heading>Description</Heading>
             <p className="mb-8 text-xs leading-5 text-gray-soft">
               Lorem ipsum dolor sit amet consectetur. Aenean sodales
@@ -64,9 +50,9 @@ export default function HomePage() {
 
             <Separator className="my-4" />
 
-            {properties.map((property) => (
+            {properties.map((property, index) => (
               <LabelValue
-                key={property.label}
+                key={`${property.label}-${index}`}
                 label={property.label}
                 value={property.value}
               />
@@ -86,27 +72,14 @@ export default function HomePage() {
           </ScrollArea>
         </div>
       </div>
-      <div className="col-span-2 h-full w-full overflow-visible">
-        <div className="relative w-full overflow-visible rounded-2xl bg-white p-7 shadow-card">
+      <div className="w-full xl:col-span-2 xl:h-full xl:overflow-scroll">
+        <div className="relative w-full rounded-2xl bg-white p-7 shadow-card">
           <Heading className="mb-4">Lorem Lorem Lorem</Heading>
-          <div className="relative w-full overflow-visible rounded-xl bg-gray-soft-25">
-            <div className="relative h-[250px] overflow-visible">
-              <ReactFlow
-                nodes={initialNodes}
-                edges={initialEdges}
-                nodeTypes={nodeTypes}
-                fitView
-                className="overflow-visible"
-                defaultEdgeOptions={{
-                  type: "smoothstep",
-                  animated: false,
-                  style: { stroke: "#b1b1b7", strokeWidth: 2 },
-                }}
-                panOnDrag={false}
-                zoomOnScroll={false}
-                style={{ overflow: "visible" }}
-                proOptions={{ hideAttribution: true }}
-              />
+          <div className="relative w-full rounded-xl bg-gray-soft-25">
+            <div className="relative h-[300px] overflow-visible">
+              <ReactFlowProvider>
+                <ReactFlow />
+              </ReactFlowProvider>
             </div>
             <div className="w-full p-4">
               <Separator className="my-4" />
@@ -118,7 +91,7 @@ export default function HomePage() {
             </div>
           </div>
           <Heading className="my-5 mb-4">Lorem ipsum dolor sit</Heading>
-          <div className="flex flex-col gap-2 2xl:grid 2xl:grid-cols-2">
+          <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2">
             <div className="rounded-xl border border-gray-200 bg-white">
               <div className="flex items-center justify-between border-b border-gray-200 px-6 py-3">
                 <span className="text-[13px] text-gray-soft-400">Asset</span>
