@@ -6,6 +6,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Handle, type NodeProps, Position } from "@xyflow/react";
+import { useState } from "react";
 import NodeContent from "./NodeContent";
 import {
   MiddleToolTipContent,
@@ -14,11 +15,22 @@ import {
 } from "./ToolTipContent";
 
 const CustomNode = ({ data, id: nodeId }: NodeProps<NodeData>) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <TooltipProvider>
-      <Tooltip delayDuration={0}>
+      <Tooltip delayDuration={0} open={isOpen} onOpenChange={setIsOpen}>
         <TooltipTrigger asChild>
-          <div className="flex flex-col items-center gap-2">
+          <div
+            className="flex flex-col items-center gap-2"
+            onClick={(e) => {
+              // Check if it's a touch device
+              if (window.matchMedia("(pointer: coarse)").matches) {
+                e.stopPropagation();
+                setIsOpen((prev) => !prev);
+              }
+            }}
+          >
             <Handle
               type="target"
               position={Position.Left}
