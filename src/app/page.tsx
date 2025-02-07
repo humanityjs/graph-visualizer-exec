@@ -9,11 +9,23 @@ import { ReactFlow } from "@xyflow/react";
 import LabelValue from "@/components/LabelValue";
 import Remediation from "@/components/Remediation";
 
+import Asset from "@/components/Asset";
 import CustomNode from "@/components/custom-node/CustomNode";
+import GraphLabel from "@/components/GraphLabel";
+import RiskCount from "@/components/RiskCount";
 import "@xyflow/react/dist/style.css";
-import { Check } from "lucide-react";
+import {
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon,
+} from "lucide-react";
 import { useMemo } from "react";
-import { initialEdges, initialNodes } from "./data";
+import {
+  initialEdges,
+  initialNodes,
+  properties,
+  remediations,
+  servers,
+} from "./data";
 
 export default function HomePage() {
   const nodeTypes = useMemo(
@@ -52,21 +64,13 @@ export default function HomePage() {
 
             <Separator className="my-4" />
 
-            <LabelValue label="Lorem ipsum dolor" value="10/19/2017" />
-            <LabelValue label="Lorem ipsum dolor" value="Ut" />
-            <LabelValue label="Lorem ipsum dolor" value="Eros" />
-            <LabelValue
-              label="Lorem ipsum dolor"
-              value={
-                <div className="flex items-center gap-2">
-                  <Check className="text-main-green h-4 w-4" />
-                  <span>Yes</span>
-                </div>
-              }
-            />
-            <LabelValue label="Lorem ipsum dolor" value="Sit" />
-            <LabelValue label="Lorem ipsum dolor" value="Lorem ipsum dolor" />
-            <LabelValue label="Lorem ipsum dolor" value="Lorem ipsum dolor" />
+            {properties.map((property) => (
+              <LabelValue
+                key={property.label}
+                label={property.label}
+                value={property.value}
+              />
+            ))}
 
             <Separator className="my-6" />
 
@@ -74,35 +78,19 @@ export default function HomePage() {
               Lorem ipsum dolor
             </Heading>
 
-            <Remediation title="Lorem P">
-              <p>
-                Lorem ipsum dolor sit amet consectetur. In laoreet elementum
-                luctus odio. Id enim urna.
-              </p>
-            </Remediation>
-            <Remediation title="Lorem S">
-              <p>
-                Lorem ipsum dolor sit amet consectetur. Quis viverra etiam
-                pellentesque lectus semper in massa purus. Auctor aenean aenean
-                senectus massa dignissim vehicula mi erat purus. Praesent
-                scelerisque aliquet metus sagittis dictum sed sed. Sed venenatis
-                sed urna quam.
-              </p>
-            </Remediation>
-            <Remediation title="Lorem T">
-              <p>
-                Lorem ipsum dolor sit amet consectetur. Nunc vitae tortor
-                convallis vitae arcu. Magna.
-              </p>
-            </Remediation>
+            {remediations.map((remediation) => (
+              <Remediation key={remediation.title} title={remediation.title}>
+                <p>{remediation.description}</p>
+              </Remediation>
+            ))}
           </ScrollArea>
         </div>
       </div>
       <div className="col-span-2 h-full w-full overflow-visible">
-        <div className="relative w-full overflow-visible rounded-2xl bg-white p-8 shadow-card">
+        <div className="relative w-full overflow-visible rounded-2xl bg-white p-7 shadow-card">
           <Heading className="mb-4">Lorem Lorem Lorem</Heading>
-          <div className="bg-gray-soft-25 relative w-full overflow-visible rounded-xl">
-            <div className="relative h-[300px] overflow-visible">
+          <div className="relative w-full overflow-visible rounded-xl bg-gray-soft-25">
+            <div className="relative h-[250px] overflow-visible">
               <ReactFlow
                 nodes={initialNodes}
                 edges={initialEdges}
@@ -119,6 +107,73 @@ export default function HomePage() {
                 style={{ overflow: "visible" }}
                 proOptions={{ hideAttribution: true }}
               />
+            </div>
+            <div className="w-full p-4">
+              <Separator className="my-4" />
+              <div className="flex items-center gap-6">
+                <GraphLabel variant="error" />
+                <GraphLabel variant="warning" />
+                <GraphLabel variant="success" />
+              </div>
+            </div>
+          </div>
+          <Heading className="my-5 mb-4">Lorem ipsum dolor sit</Heading>
+          <div className="flex flex-col gap-2 2xl:grid 2xl:grid-cols-2">
+            <div className="rounded-xl border border-gray-200 bg-white">
+              <div className="flex items-center justify-between border-b border-gray-200 px-6 py-3">
+                <span className="text-[13px] text-gray-soft-400">Asset</span>
+                <span className="text-[13px] text-gray-soft-400">
+                  Contextual Risk
+                </span>
+              </div>
+
+              <div className="divide-y divide-gray-200">
+                {servers.map((server) => (
+                  <Asset
+                    key={server.name}
+                    name={server.name}
+                    ip={server.ip}
+                    status={server.status}
+                  />
+                ))}
+              </div>
+
+              <div className="flex items-center justify-center gap-4 border-t border-gray-200 px-6 py-3 text-[13px] text-gray-soft-500">
+                <button className="disabled:text-gray-300" disabled>
+                  <ChevronLeftIcon className="h-5 w-5" />
+                </button>
+                <span>
+                  Showing 1-{servers.length} of {servers.length}
+                </span>
+                <button className="disabled:text-gray-300" disabled>
+                  <ChevronRightIcon className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-gray-200 bg-white p-6">
+              <h2 className="mb-6 text-lg font-medium text-gray-soft-500">
+                Contextual Risk
+              </h2>
+
+              <div className="grid grid-cols-2 gap-8">
+                <div className="flex flex-col gap-5">
+                  <RiskCount level="critical" count={2} />
+                  <RiskCount level="high" count={0} />
+                  <RiskCount level="medium" count={0} />
+                  <RiskCount level="low" count={0} />
+                </div>
+                <div className="relative flex items-center justify-center">
+                  <div className="relative h-32 w-32">
+                    <div className="absolute inset-0 rounded-full border-8 border-red-500"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-4xl font-semibold text-gray-700">
+                        2
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const mainNavItems = [
@@ -82,15 +82,30 @@ function SidebarContent({
   setIsMobileOpen,
 }: SidebarContentProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // could probably use a resizeObserver but this is way simpler to implement and understand
+      const is2XL = window.matchMedia("(max-width: 1536px)").matches;
+      setIsCollapsed(is2XL);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <aside
       className={cn(
         "relative h-screen flex-col border-r bg-white pt-5 transition-all duration-300 ease-in-out",
         isCollapsed ? "w-[84px]" : "w-64",
-        isMobile ? "flex" : "hidden lg:flex",
+        isMobile ? "flex" : "hidden xl:flex",
       )}
     >
-      <div className="absolute -right-5 top-5 hidden lg:block">
+      <div className="absolute -right-5 top-5 hidden xl:block">
         <div className="relative">
           <Button
             variant="outline"
@@ -107,7 +122,7 @@ function SidebarContent({
         </div>
       </div>
 
-      <div className="flex items-center justify-end px-4 lg:hidden">
+      <div className="flex items-center justify-end px-4 xl:hidden">
         <Button
           variant="ghost"
           size="icon"

@@ -1,4 +1,4 @@
-import { FileText, Server, Shield } from "lucide-react";
+import { FileText, Server, ShieldX } from "lucide-react";
 
 const Number = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -29,7 +29,7 @@ export function SourceToolTipContent() {
         </div>
       </div>
 
-      <h3 className="bg-light-purple text-main-purple inline-block rounded-md p-2 pr-8 font-mono font-semibold">
+      <h3 className="inline-block rounded-md bg-light-purple p-2 pr-8 font-mono font-semibold text-main-purple">
         Lorem: 1.2.3.4
       </h3>
     </div>
@@ -51,17 +51,17 @@ export function MiddleToolTipContent() {
         <span className="font-bold text-gray-soft">
           Lorem: Loremipsum Loremipsum
         </span>
-        <span className="bg-light-purple text-main-purple rounded px-2 py-1 font-mono text-xs font-semibold">
+        <span className="rounded bg-light-purple px-2 py-1 font-mono text-xs font-semibold text-main-purple">
           1.2.3.4
         </span>
-        <span className="bg-light-purple text-main-purple rounded px-2 py-1 font-mono text-xs font-semibold">
+        <span className="rounded bg-light-purple px-2 py-1 font-mono text-xs font-semibold text-main-purple">
           1.2.3.4
         </span>
         <span className="font-bold text-gray-soft">Loremipsum</span>
-        <span className="bg-light-purple text-main-purple rounded px-2 py-1 font-mono text-xs font-semibold">
+        <span className="rounded bg-light-purple px-2 py-1 font-mono text-xs font-semibold text-main-purple">
           1.2.3.4
         </span>
-        <span className="bg-light-purple text-main-purple rounded px-2 py-1 font-mono text-xs font-semibold">
+        <span className="rounded bg-light-purple px-2 py-1 font-mono text-xs font-semibold text-main-purple">
           1.2.3.4
         </span>
       </div>
@@ -78,14 +78,14 @@ export function TargetToolTipContent() {
             <Server className="h-6 w-6 text-blue-500" />
           </div>
           <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500">
-            <Shield className="h-3 w-3 text-white" />
+            <ShieldX className="h-3 w-3 text-white" />
           </div>
         </div>
         <div className="flex flex-col">
           <span className="text-sm font-semibold text-gray-soft">
             Loremipsumdolorsit
           </span>
-          <span className="text-gray-soft-500 text-xs">192.168.1.1</span>
+          <span className="text-xs text-gray-soft-500">192.168.1.1</span>
         </div>
       </div>
 

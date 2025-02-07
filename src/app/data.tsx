@@ -1,4 +1,5 @@
 import { MarkerType, type Node } from "@xyflow/react";
+import { Check } from "lucide-react";
 
 export type NodeData = Node<
   {
@@ -145,4 +146,80 @@ const initialEdges = [
   },
 ];
 
-export { initialEdges, initialNodes };
+const servers: {
+  name: string;
+  ip: string;
+  status: "critical" | "warning" | "success";
+}[] = [
+  {
+    name: "Loremipsumdolorsit",
+    ip: "192.168.1.1",
+    status: "critical",
+  },
+  {
+    name: "Loremipsumdolorsit002",
+    ip: "192.168.1.2",
+    status: "warning",
+  },
+  {
+    name: "Loremipsumdolorsit003",
+    ip: "192.168.1.3",
+    status: "success",
+  },
+];
+
+const remediations = [
+  {
+    title: "Lorem P",
+    description:
+      "Lorem ipsum dolor sit amet consectetur. In laoreet elementum luctus odio. Id enim urna.",
+  },
+  {
+    title: "Lorem S",
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Quis viverra etiam pellentesque lectus semper in massa purus. Auctor aenean aenean senectus massa dignissim vehicula mi erat purus. Praesent scelerisque aliquet metus sagittis dictum sed sed. Sed venenatis sed urna quam.",
+  },
+  {
+    title: "Lorem T",
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Nunc vitae tortor convallis vitae arcu. Magna.",
+  },
+];
+
+const properties = [
+  {
+    label: "Lorem ipsum dolor",
+    value: "10/19/2017",
+  },
+  {
+    label: "Lorem ipsum dolor",
+    value: "Ut",
+  },
+  {
+    label: "Lorem ipsum dolor",
+    value: "Eros",
+  },
+  {
+    label: "Lorem ipsum dolor",
+    value: (
+      <div className="flex items-center gap-2">
+        <Check className="h-4 w-4 text-main-green" />
+        <span>Yes</span>
+      </div>
+    ),
+  },
+  {
+    label: "Lorem ipsum dolor",
+    value: "Sit",
+  },
+  {
+    label: "Lorem ipsum dolor",
+    value: "Lorem ipsum dolor",
+  },
+  {
+    label: "Lorem ipsum dolor",
+    value: "Lorem ipsum dolor",
+  },
+];
+
+export { initialEdges, initialNodes, properties, remediations, servers };
