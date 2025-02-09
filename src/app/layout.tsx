@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="bg-white">
-        <div className="flex min-h-screen items-start justify-start overflow-x-hidden">
+        <div className="flex h-screen items-start justify-start overflow-hidden">
           <Sidebar />
-          <main className="min-h-screen w-full flex-1 bg-[rgb(250,250,250)] p-1 pt-20 md:p-6 lg:p-12 lg:pt-20 xl:pt-8">
+          <main className="h-screen w-full flex-1 overflow-scroll bg-[rgb(250,250,250)] p-1 pt-20 md:p-6 lg:p-12 lg:pt-20 xl:pt-8">
             {children}
           </main>
         </div>

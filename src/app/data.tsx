@@ -1,13 +1,13 @@
 import { MarkerType, type Node } from "@xyflow/react";
 import {
   AlertTriangle,
-  Box,
+  ArrowDownWideNarrow,
   Check,
+  Cuboid,
   FileText,
   LayoutGrid,
-  Pin,
-  SlidersHorizontal,
-  Sparkles,
+  Shrink,
+  Unplug,
 } from "lucide-react";
 
 export type NodeData = Node<
@@ -232,13 +232,13 @@ const properties = [
 ];
 
 const mainNavItems = [
-  { href: "/", icon: LayoutGrid, label: "Dashboard" },
-  { href: "/alerts", icon: AlertTriangle, label: "Alerts" },
-  { href: "/resources", icon: Box, label: "Resources" },
-  { href: "/integrations", icon: Sparkles, label: "Integrations" },
-  { href: "/pinned", icon: Pin, label: "Pinned" },
-  { href: "/documents", icon: FileText, label: "Documents" },
-  { href: "/filters", icon: SlidersHorizontal, label: "Filters" },
+  { href: "/", icon: LayoutGrid, label: "Lorem" },
+  { href: "/alerts", icon: AlertTriangle, label: "Lorem" },
+  { href: "/resources", icon: Cuboid, label: "Lorem" },
+  { href: "/integrations", icon: Shrink, label: "Lorem" },
+  { href: "/pinned", icon: Unplug, label: "Lorem" },
+  { href: "/documents", icon: FileText, label: "Lorem" },
+  { href: "/filters", icon: ArrowDownWideNarrow, label: "Lorem" },
 ];
 
 export {

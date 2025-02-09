@@ -26,7 +26,7 @@ function Asset({
       <div
         className={cn(
           "my-1 rounded-full px-4 py-1",
-          status === "critical" && "bg-red-50",
+          status === "critical" && "bg-[#FFE2E0]",
           status === "warning" && "bg-amber-50",
           status === "success" && "bg-green-50",
         )}
@@ -34,7 +34,7 @@ function Asset({
         <span
           className={cn(
             "text-sm font-bold",
-            status === "critical" && "text-red-600",
+            status === "critical" && "text-main-red",
             status === "warning" && "text-amber-600",
             status === "success" && "text-green-600",
           )}

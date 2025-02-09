@@ -22,28 +22,28 @@ const Remediation = ({
 }) => {
   const Icon = icon;
   return (
-    <Collapsible className="shadow-card-2 mx-1 my-1 mb-4 rounded-2xl bg-white p-4">
+    <Collapsible className="mx-1 my-1 mb-5 rounded-2xl bg-white p-4 shadow-card-2">
       <CollapsibleTrigger className="w-full text-left">
         <Heading className="text-sm text-[#030229]">{title}</Heading>
         <div className="flex w-full items-center justify-between">
-          <div className="bg-gray-soft-25 flex w-full items-center justify-between gap-6 rounded-lg px-3 py-2">
+          <div className="flex w-full items-center justify-between gap-6 rounded-lg bg-gray-soft-25 px-3 py-2">
             <div className="flex items-center gap-2">
               <div className="flex h-[52px] w-[52px] items-center justify-center rounded-full bg-[#D7EAFF]">
                 <Icon size={24} />
               </div>
               <div>
-                <p className="text-gray-soft-900 text-xs font-semibold">
+                <p className="text-xs font-semibold text-gray-soft-900">
                   {serverName}
                 </p>
-                <p className="text-gray-soft-500 text-[10px] font-medium">
+                <p className="text-[10px] font-medium text-gray-soft-500">
                   {" "}
                   Server
                 </p>
               </div>
             </div>
 
-            <div className="border-gray-soft-500 border-l pl-3">
-              <p className="text-gray-soft-400 text-sm leading-6">
+            <div className="border-l border-gray-soft-500 pl-3">
+              <p className="text-sm leading-6 text-gray-soft-400">
                 {serverInfo}
               </p>
             </div>

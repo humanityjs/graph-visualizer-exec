@@ -24,9 +24,9 @@ export default function HomePage() {
     <div className="flex h-full w-full flex-col gap-6 overflow-scroll xl:grid xl:grid-cols-3 xl:gap-8 xl:overflow-hidden">
       <div className="w-full xl:col-span-1 xl:h-full xl:overflow-hidden">
         <div className="h-full w-full rounded-2xl bg-white shadow-card">
-          <div className="h-full p-3 xl:overflow-scroll xl:p-8">
+          <div className="h-full p-3 xl:overflow-scroll xl:px-[30px] xl:py-[20px]">
             <Heading>Description</Heading>
-            <p className="mb-8 text-xs leading-5 text-gray-soft">
+            <p className="mb-[46px] text-xs leading-5 text-gray-soft">
               Lorem ipsum dolor sit amet consectetur. Aenean sodales
               pellentesque gravida nibh et magna faucibus. Dui commodo ut metus
               amet egestas habitant viverra. Quisque fusce senectus facilisis
@@ -47,7 +47,7 @@ export default function HomePage() {
               augue lorem quam lorem suspendisse.
             </p>
 
-            <Separator className="my-4" />
+            <Separator className="my-3" />
 
             {properties.map((property, index) => (
               <LabelValue
@@ -57,7 +57,7 @@ export default function HomePage() {
               />
             ))}
 
-            <Separator className="my-6" />
+            <Separator className="my-3" />
 
             <Heading className="text-sm text-gray-soft">
               Lorem ipsum dolor
@@ -72,7 +72,7 @@ export default function HomePage() {
         </div>
       </div>
       <div className="w-full xl:col-span-2 xl:h-full xl:overflow-scroll">
-        <div className="relative w-full rounded-2xl bg-white p-3 shadow-card xl:p-7">
+        <div className="relative w-full rounded-2xl bg-white p-3 shadow-card xl:px-[30px] xl:py-[20px]">
           <Heading className="mb-4">Lorem Lorem Lorem</Heading>
           <div className="relative w-full rounded-xl bg-gray-soft-25">
             <div className="relative h-[300px] overflow-visible">
@@ -137,7 +137,7 @@ export default function HomePage() {
                 </div>
                 <div className="relative flex items-center justify-center">
                   <div className="relative h-32 w-32">
-                    <div className="absolute inset-0 rounded-full border-8 border-red-500"></div>
+                    <div className="border-main-red absolute inset-0 rounded-full border-8"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-4xl font-semibold text-gray-700">
                         2

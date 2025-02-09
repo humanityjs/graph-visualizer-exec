@@ -6,8 +6,10 @@ import {
   CircleUser,
   LogOut,
   Settings,
+  StickyNote,
   X,
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import NavLink from "./NavLink";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -88,7 +90,12 @@ function SidebarContent({
       </div>
 
       <div className="w-full flex-1 overflow-x-visible px-4">
-        <nav className="space-y-1 py-4">
+        <nav className="space-y-2 py-4">
+          {isCollapsed && (
+            <div className="flex items-center justify-center pb-2">
+              <Image src="/logo.png" alt="logo" width={40} height={40} />
+            </div>
+          )}
           {mainNavItems.map((item) => (
             <NavLink
               key={item.href}
@@ -101,17 +108,18 @@ function SidebarContent({
       </div>
 
       <div className="relative flex w-full flex-col justify-between space-y-6 overflow-visible p-4">
-        <div className="w-full space-y-1">
-          {[{ href: "/settings", icon: Settings, label: "Settings" }].map(
-            (item) => (
-              <NavLink
-                key={item.href}
-                isCollapsed={isCollapsed}
-                pathname={pathname}
-                item={item}
-              />
-            ),
-          )}
+        <div className="w-full space-y-2">
+          {[
+            { href: "/settings", icon: Settings, label: "Lorem" },
+            { href: "/lorem", icon: StickyNote, label: "Lorem" },
+          ].map((item) => (
+            <NavLink
+              key={item.href}
+              isCollapsed={isCollapsed}
+              pathname={pathname}
+              item={item}
+            />
+          ))}
         </div>
         <div className="w-full border-t">
           <div className="flex items-center justify-between px-1 py-3">
