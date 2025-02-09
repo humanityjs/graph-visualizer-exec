@@ -233,12 +233,12 @@ const properties = [
 
 const mainNavItems = [
   { href: "/", icon: LayoutGrid, label: "Lorem" },
-  { href: "/alerts", icon: AlertTriangle, label: "Lorem" },
-  { href: "/resources", icon: Cuboid, label: "Lorem" },
-  { href: "/integrations", icon: Shrink, label: "Lorem" },
-  { href: "/pinned", icon: Unplug, label: "Lorem" },
-  { href: "/documents", icon: FileText, label: "Lorem" },
-  { href: "/filters", icon: ArrowDownWideNarrow, label: "Lorem" },
+  { href: "/#", icon: AlertTriangle, label: "Lorem" },
+  { href: "/#", icon: Cuboid, label: "Lorem" },
+  { href: "/#", icon: Shrink, label: "Lorem" },
+  { href: "/#", icon: Unplug, label: "Lorem" },
+  { href: "/#", icon: FileText, label: "Lorem" },
+  { href: "/#", icon: ArrowDownWideNarrow, label: "Lorem" },
 ];
 
 export {

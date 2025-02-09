@@ -96,9 +96,9 @@ function SidebarContent({
               <Image src="/logo.png" alt="logo" width={40} height={40} />
             </div>
           )}
-          {mainNavItems.map((item) => (
+          {mainNavItems.map((item, index) => (
             <NavLink
-              key={item.href}
+              key={`${item.label}-${index}`}
               isCollapsed={isCollapsed}
               pathname={pathname}
               item={item}
@@ -110,11 +110,11 @@ function SidebarContent({
       <div className="relative flex w-full flex-col justify-between space-y-6 overflow-visible p-4">
         <div className="w-full space-y-2">
           {[
-            { href: "/settings", icon: Settings, label: "Lorem" },
-            { href: "/lorem", icon: StickyNote, label: "Lorem" },
-          ].map((item) => (
+            { href: "/#", icon: Settings, label: "Lorem" },
+            { href: "/#", icon: StickyNote, label: "Lorem" },
+          ].map((item, index) => (
             <NavLink
-              key={item.href}
+              key={`${item.label}-${index}`}
               isCollapsed={isCollapsed}
               pathname={pathname}
               item={item}
