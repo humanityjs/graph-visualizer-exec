@@ -26,8 +26,6 @@ export default function HomePage() {
   const contentRef = useRef<HTMLDivElement>(null);
   const width = useWidth(contentRef);
 
-  console.log(width);
-
   return (
     <div
       ref={contentRef}
@@ -103,7 +101,7 @@ export default function HomePage() {
           <Heading className="my-5 mb-4">Lorem ipsum dolor sit</Heading>
           <div
             className={cn(
-              "gap-2",
+              "gap-5",
               width < 1100 ? "flex flex-col" : "lg:grid lg:grid-cols-2",
             )}
           >
@@ -139,13 +137,13 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h2 className="mb-6 text-lg font-medium text-gray-soft-500">
+            <div className="rounded-xl border border-gray-200 bg-white px-6 py-4">
+              <h2 className="mb-5 text-lg font-medium text-gray-soft-500">
                 Contextual Risk
               </h2>
 
               <div className="grid grid-cols-2 gap-8">
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-4">
                   <RiskCount level="critical" count={2} />
                   <RiskCount level="high" count={0} />
                   <RiskCount level="medium" count={0} />
@@ -153,7 +151,7 @@ export default function HomePage() {
                 </div>
                 <div className="relative flex items-center justify-center">
                   <div className="relative h-32 w-32">
-                    <div className="border-main-red absolute inset-0 rounded-full border-8"></div>
+                    <div className="absolute inset-0 rounded-full border-8 border-main-red"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-4xl font-semibold text-gray-700">
                         2
