@@ -2,6 +2,7 @@
 
 import Heading from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
+import { useRef } from "react";
 
 import { ReactFlowProvider } from "@xyflow/react";
 
@@ -12,6 +13,8 @@ import Asset from "@/components/Asset";
 import GraphLabel from "@/components/GraphLabel";
 import ReactFlow from "@/components/ReactFlow";
 import RiskCount from "@/components/RiskCount";
+import { useWidth } from "@/hooks/useWidth";
+import { cn } from "@/lib/utils";
 import "@xyflow/react/dist/style.css";
 import {
   ChevronLeft as ChevronLeftIcon,
@@ -20,8 +23,16 @@ import {
 import { properties, remediations, servers } from "./data";
 
 export default function HomePage() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const width = useWidth(contentRef);
+
+  console.log(width);
+
   return (
-    <div className="flex h-full w-full flex-col gap-6 overflow-scroll xl:grid xl:grid-cols-3 xl:gap-8 xl:overflow-hidden">
+    <div
+      ref={contentRef}
+      className="flex h-full w-full flex-col gap-5 overflow-scroll xl:grid xl:grid-cols-3 xl:gap-8 xl:overflow-hidden"
+    >
       <div className="w-full xl:col-span-1 xl:h-full xl:overflow-hidden">
         <div className="h-full w-full rounded-2xl bg-white shadow-card">
           <div className="h-full p-3 xl:overflow-scroll xl:px-[30px] xl:py-[20px]">
@@ -90,7 +101,12 @@ export default function HomePage() {
             </div>
           </div>
           <Heading className="my-5 mb-4">Lorem ipsum dolor sit</Heading>
-          <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2">
+          <div
+            className={cn(
+              "gap-2",
+              width < 1100 ? "flex flex-col" : "lg:grid lg:grid-cols-2",
+            )}
+          >
             <div className="rounded-xl border border-gray-200 bg-white">
               <div className="flex items-center justify-between border-b border-gray-200 px-6 py-3">
                 <span className="text-[13px] text-gray-soft-400">Asset</span>

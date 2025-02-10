@@ -10,6 +10,7 @@ import {
   X,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import NavLink from "./NavLink";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -58,7 +59,7 @@ function SidebarContent({
     <aside
       className={cn(
         "relative h-screen flex-col border-r bg-white pt-5 transition-all duration-300 ease-in-out",
-        isCollapsed ? "w-[84px]" : "w-64",
+        isCollapsed ? "w-[84px]" : "w-[250px]",
         isMobile ? "flex" : "hidden xl:flex",
       )}
     >
@@ -79,7 +80,7 @@ function SidebarContent({
         </div>
       </div>
 
-      <div className="flex items-center justify-end px-4 xl:hidden">
+      <div className="absolute -right-5 top-2 px-4 xl:hidden">
         <Button
           variant="ghost"
           size="icon"
@@ -91,11 +92,24 @@ function SidebarContent({
 
       <div className="w-full flex-1 overflow-x-visible px-4">
         <nav className="space-y-2 py-4">
-          {isCollapsed && (
-            <div className="flex items-center justify-center pb-2">
-              <Image src="/logo.png" alt="logo" width={40} height={40} />
-            </div>
-          )}
+          <Link href="/">
+            {isCollapsed ? (
+              <div className="flex items-center justify-center pb-6">
+                <Image src="/logo.png" alt="logo" width={40} height={40} />
+              </div>
+            ) : (
+              <div className="flex items-center justify-start pb-6">
+                <Image
+                  src="/logo-full.svg"
+                  alt="logo"
+                  className="h-[32px] w-auto"
+                  width={0}
+                  height={0}
+                  priority
+                />
+              </div>
+            )}
+          </Link>
           {mainNavItems.map((item, index) => (
             <NavLink
               key={`${item.label}-${index}`}

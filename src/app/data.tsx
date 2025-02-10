@@ -168,12 +168,7 @@ const servers: {
   {
     name: "Loremipsumdolorsit002",
     ip: "192.168.1.2",
-    status: "warning",
-  },
-  {
-    name: "Loremipsumdolorsit003",
-    ip: "192.168.1.3",
-    status: "success",
+    status: "critical",
   },
 ];
 
